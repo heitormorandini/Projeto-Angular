@@ -1,0 +1,12 @@
+ng-app="nome" -> define limites do app de angular
+
+em script -> angular.module("nome", [lista de modulos])
+angular.module("nome").controller("nome controller", function($scope) {
+})
+
+ng-controller="nome controller" -> define limites do controller
+ng-repeat="var in array" ou "(key, value) in array" ->
+ng-model="nome var" -> define uma variavel do scope
+ng-click="function" -> define uma ação para o evento
+ng-disabled="condição" -> define uma secção disabilitada se condição == false
+ng-options="[var.campo2 as] var.campo1 for var in array"

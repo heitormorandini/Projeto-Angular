@@ -5,8 +5,22 @@ angular.module("nome").controller("nome controller", function($scope) {
 })
 
 ng-controller="nome controller" -> define limites do controller
-ng-repeat="var in array" ou "(key, value) in array" ->
+ng-repeat="var in array" ou "(key, value) in array" -> repete para cada item no array
 ng-model="nome var" -> define uma variavel do scope
 ng-click="function" -> define uma ação para o evento
 ng-disabled="condição" -> define uma secção disabilitada se condição == false
-ng-options="[var.campo2 as] var.campo1 for var in array"
+ng-options="[var.campo2 as] var.campo1 [group by var.campo] for var in array" -> cria um dropbox
+ng-class="{'classes ': condição}" -> atribui uma ou mais classes para a tag
+ng-style="{'nome stilo': 'valor'}" -> atribui um ou mais styles para a tag
+ng-show="condição" -> atribui hide se condição == false
+ng-hide="condição" -> atribui hide se condição == true
+ng-if="condição" -> adiciona ou remove a tag inteira, se condição
+ng-include="'file.html'" -> inclui uma outra pagina na pagina atual
+ng-required="true" -> marca tag como necessaria -> é adicionada propriedade $invalid e $valid
+$pristine -> campo nunca foi tocado
+$dirty -> campo ja foi tocado ao menos uma vez
+ng-minlength e maxlength="tamanho" -> define tamanho minimo e maximo
+ng-pattern="" -> define uma RegExp
+importar o script do ngMessages do arquivo angular-messages
+    '->ng-messages="contatoForm.nome.$error" -> exemplo, pegará todos os erros do nome
+        '->ng-message="required" -> a mensagem que tem em error, que sera utilizada na tag

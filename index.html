@@ -41,17 +41,20 @@
                     {
                         nome: "Pedro",
                         telefone: "9999-3223",
-                        cor: "blue"
+                        cor: "blue",
+                        data: new Date()
                     },
                     {
                         nome: "Ana",
                         telefone: "9999-3231",
-                        cor: "red"
+                        cor: "red",
+                        data: new Date()
                     },
                     {
                         nome: "Maria",
                         telefone: "9429-3223",
-                        cor: "yellow"
+                        cor: "yellow",
+                        data: new Date()
                     }
                 ];
                 $scope.operadoras = [
@@ -98,6 +101,10 @@
                         return contato.selecionado;
                     });
                 };
+                $scope.ordenarPor = function(campo) {
+                    $scope.criterioDeOrdenacao = campo;
+                    $scope.direcaoDaOrdenacao = !$scope.direcaoDaOrdenacao;
+                };
             });
         </script>
     </head>
@@ -110,17 +117,19 @@
                 <table ng-show="contatos.length != 0" class="table">
                     <tr>
                         <th></th>
-                        <th>Nome</th>
-                        <th>Telefone</th>
+                        <th><a href="" ng-click="ordenarPor('nome')">Nome</a></th>
+                        <th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
                         <th>Operadora</th>
                         <th></th>
+                        <th></th>
                     </tr>
-                    <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
+                    <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
                         <td><input type="checkbox" ng-model="contato.selecionado"></td>
                         <td>{{contato.nome}}</td>
                         <td>{{contato.telefone}}</td>
                         <td>{{contato.operadora.nome}}</td>
                         <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div></td>
+                        <td>{{contato.data | date: 'dd/MM/yyyy hh:mm'}}</td>
                         <!--<td ng-repeat="(key, value) in contato">
                             {{value}}
                         </td>-->
